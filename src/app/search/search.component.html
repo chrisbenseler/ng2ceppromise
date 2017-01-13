@@ -1,8 +1,9 @@
 <h2>Busca</h2>
 
-<form (ngSubmit)="onSubmit()">
-	<input type="text" required minlength=8 maxlength=8 placeholder="00000000" [(ngModel)]="zipcode" [ngModelOptions]="{standalone: true}" />
-	<button type="submit">buscar</button>
+<form (ngSubmit)="onSubmit()" class="form-inline">
+	<label for="">CEP </label>
+	<input type="text" class="form-control" required minlength=8 maxlength=8 placeholder="00000000" [(ngModel)]="zipcode" [ngModelOptions]="{standalone: true}" />
+	<button type="submit" class="btn btn-primary">buscar</button>
 </form>
 
 <div itemscope itemtype="http://schema.org/ContactPoint" *ngIf="address"> 

@@ -1,16 +1,23 @@
 <h2>Busca</h2>
 
-<form (ngSubmit)="onSubmit()" class="form-inline">
-	<label for="">CEP </label>
-	<input type="text" class="form-control" required minlength=8 maxlength=8 placeholder="00000000" [(ngModel)]="zipcode" [ngModelOptions]="{standalone: true}" />
-	<button type="submit" class="btn btn-primary">buscar</button>
+<form (ngSubmit)="onSubmit()" class="">
+	<div class="input-group">
+		<div class="input-group-addon">CEP</div>
+		<input type="text" required size=8 minlength=8 maxlength=8 placeholder="00000000" [(ngModel)]="zipcode" [ngModelOptions]="{standalone: true}" />
+	</div>
+	<p class="form-text text-muted">
+	Utilize apenas números para informar o CEP, não é necessário usar hífem
+	</p>
+	<footer class="float-sm-right">
+		<button type="submit" class="btn btn-primary">buscar</button>
+	</footer>
 </form>
-
+<sk-fading-circle *ngIf="is_searching"></sk-fading-circle>
 <div itemscope itemtype="http://schema.org/ContactPoint" *ngIf="address"> 
    <div itemscope itemtype="schema.org/PostalAddress"> 
-      <span itemprop="streetAddress">{{ address.street }}</span> 
-      <span itemprop="addressLocality">{{ address.city }}</span>
-      <span itemprop="addressRegion">{{ address.state }}</span> 
-      <span itemprop="postalCode">{{ address.cep }}</span> 
+      <span itemprop="streetAddress">Rua/avenida/etc: {{ address.street }}</span> 
+      <span itemprop="addressLocality">Cidade: {{ address.city }}</span>
+      <span itemprop="addressRegion">Estado: {{ address.state }}</span> 
+      <span itemprop="postalCode">CEP: {{ address.cep }}</span> 
    </div> 
 </div>

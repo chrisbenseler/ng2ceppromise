@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { FadingCircleComponent } from 'ng-spin-kit/app/spinners';
+
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
@@ -21,7 +23,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AboutComponent,
-    SearchComponent
+    SearchComponent,
+    FadingCircleComponent
   ],
   imports: [
     BrowserModule,

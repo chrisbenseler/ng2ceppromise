@@ -1,3 +1,15 @@
-<p>
-  search works!
-</p>
+<h2>Busca</h2>
+
+<form (ngSubmit)="onSubmit()">
+	<input type="text" required minlength=8 maxlength=8 placeholder="00000000" [(ngModel)]="zipcode" [ngModelOptions]="{standalone: true}" />
+	<button type="submit">buscar</button>
+</form>
+
+<div itemscope itemtype="http://schema.org/ContactPoint" *ngIf="address"> 
+   <div itemscope itemtype="schema.org/PostalAddress"> 
+      <span itemprop="streetAddress">{{ address.street }}</span> 
+      <span itemprop="addressLocality">{{ address.city }}</span>
+      <span itemprop="addressRegion">{{ address.state }}</span> 
+      <span itemprop="postalCode">{{ address.cep }}</span> 
+   </div> 
+</div>

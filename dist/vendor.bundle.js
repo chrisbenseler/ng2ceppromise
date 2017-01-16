@@ -73158,15 +73158,17 @@ function listenToTriggers(renderer, nativeElement, triggers, openFn, closeFn, to
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function ServiceError(options) {
-  options = options || {};
+function ServiceError() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      message = _ref.message,
+      service = _ref.service;
+
   this.name = 'ServiceError';
-  this.message = options.message;
-  this.service = options.service;
+  this.message = message;
+  this.service = service;
 }
 
-ServiceError.prototype = Object.create(Error.prototype);
-ServiceError.prototype.constructor = Error;
+ServiceError.prototype = new Error();
 
 exports.default = ServiceError;
 module.exports = exports['default'];
@@ -95949,16 +95951,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 function CepPromiseError() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      message = _ref.message,
+      type = _ref.type,
+      errors = _ref.errors;
 
   this.name = 'CepPromiseError';
-  this.message = options.message;
-  this.type = options.type;
-  this.errors = options.errors;
+  this.message = message;
+  this.type = type;
+  this.errors = errors;
 }
 
-CepPromiseError.prototype = Object.create(Error.prototype);
-CepPromiseError.prototype.constructor = CepPromiseError;
+CepPromiseError.prototype = new Error();
 
 exports.default = CepPromiseError;
 module.exports = exports['default'];

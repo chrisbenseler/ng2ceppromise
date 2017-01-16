@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core'
 import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
-
-//import { default as cep } from 'cep-promise';
-let cep = require('cep-promise/dist/cep-promise');
+import { default as cep } from 'cep-promise'
 
 @Component({
   selector: 'app-search',

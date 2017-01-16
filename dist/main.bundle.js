@@ -179,6 +179,8 @@ var AppModule = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cep_promise__ = __webpack_require__(658);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cep_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_cep_promise__);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return SearchComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -190,8 +192,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-//import { default as cep } from 'cep-promise';
-var cep = __webpack_require__(658);
+
 var SearchComponent = (function () {
     function SearchComponent() {
         this.zipcode = "";
@@ -206,7 +207,7 @@ var SearchComponent = (function () {
         this.error = null;
         this.is_searching = true;
         this.address = null;
-        cep(this.zipcode)
+        __WEBPACK_IMPORTED_MODULE_1_cep_promise___default()(this.zipcode)
             .then(function (data) {
             _this.address = data;
             _this.is_searching = false;

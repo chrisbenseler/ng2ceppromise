@@ -23,24 +23,29 @@ describe('ng2ceppromise App', function() {
 
   it('should submit form', () => {
     page.getElementsBySelector('form button').click()
-   	
   })
 
   it('should have result', () => {
-  	waitForElementToBePresent(page.getElementsBySelector("section div ul"))
+  	page.waitForElementToBePresent(page.getElementsBySelector("section div ul"))
   	let address = page.getElementsBySelector("section div ul li:first-child").getText()
   	expect(address).toBe('Rua Padre Ramon Ortiz')
   })
 
+  it('should fill input with invalid zip code', () => {
+    let input = page.getElementsBySelector('form input')
+    input.clear().then( () => {
+    	input.sendKeys('11111111')
+    })
+  })
+
+  it('should submit form again', () => {
+    page.getElementsBySelector('form button').click()
+  })
+
+  it('should have error message', () => {
+  	page.waitForElementToBePresent(page.getElementsBySelector("div.alert.alert-warning"))
+  	expect(page.getElementsBySelector('div.alert.alert-warning').isPresent()).toBe(true)
+  })
+
 })
 
-function waitForElementToBePresent(element){
-
-	browser.wait(function () {
-	return element.isPresent();
-	},60000);
-
-	browser.wait(function () {
-	return element.isDisplayed();
-	},60000);
-};

@@ -13,4 +13,9 @@ export class Ng2ceppromisePage {
   	return element(by.css(selector))
   }
 
+  waitForElementToBePresent(element){
+	browser.wait( () => element.isPresent(), 10000)
+	browser.wait( () => element.isDisplayed(), 10000)
+  }
+
 }

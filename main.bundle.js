@@ -197,11 +197,13 @@ var SearchComponent = (function () {
         this.zipcode = "";
         this.address = null;
         this.is_searching = false;
+        this.error = null;
     }
     SearchComponent.prototype.ngOnInit = function () {
     };
     SearchComponent.prototype.onSubmit = function () {
         var _this = this;
+        this.error = null;
         this.is_searching = true;
         this.address = null;
         cep(this.zipcode)
@@ -210,7 +212,7 @@ var SearchComponent = (function () {
             _this.is_searching = false;
         })
             .catch(function (err) {
-            console.log(err);
+            _this.error = err;
             _this.is_searching = false;
         });
     };
@@ -338,7 +340,7 @@ module.exports = "<h1>\n  {{title}}\n</h1>\n<nav class=\"nav nav-tabs\">\n\t<li 
 /***/ 917:
 /***/ function(module, exports) {
 
-module.exports = "<h2>Busca</h2>\n\n<div class=\"row\">\n\t<form (ngSubmit)=\"onSubmit()\" class=\"col-md-3 col-sm-12\">\n\t\t<div class=\"input-group\">\n\t\t\t<div class=\"input-group-addon\">CEP</div>\n\t\t\t<input type=\"text\" class=\"form-control\" required size=8 minlength=8 maxlength=8 placeholder=\"00000000\" [(ngModel)]=\"zipcode\" [ngModelOptions]=\"{standalone: true}\" />\n\t\t</div>\n\t\t<p class=\"form-text text-muted\">\n\t\tUtilize apenas números para informar o CEP, não é necessário usar hífem\n\t\t</p>\n\t\t<footer class=\"float-sm-right\">\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\">buscar</button>\n\t\t</footer>\n\t</form>\n\t<section class=\"col-md-9\">\n\t\t<sk-fading-circle *ngIf=\"is_searching\"></sk-fading-circle>\n\t\t<div itemscope itemtype=\"http://schema.org/ContactPoint\" *ngIf=\"address\" class=\"card\"> \n\t\t\t<ul class=\"list-group list-group-flush\" itemscope itemtype=\"schema.org/PostalAddress\"> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"streetAddress\">{{ address.street }}</li> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"addressLocality\">Cidade: {{ address.city }}</li>\n\t\t\t\t<li class=\"list-group-item\" itemprop=\"addressRegion\">Estado: {{ address.state }}</li> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"postalCode\">CEP: {{ address.cep }}</li> \n\t\t\t</ul>\n\t\t</div>\n\t</section>\n</div>"
+module.exports = "<h2>Busca</h2>\n\n<div class=\"row\">\n\t<form (ngSubmit)=\"onSubmit()\" class=\"col-md-3 col-sm-12\">\n\t\t<div class=\"input-group\">\n\t\t\t<div class=\"input-group-addon\">CEP</div>\n\t\t\t<input type=\"text\" class=\"form-control\" required size=8 minlength=8 maxlength=8 placeholder=\"00000000\" [(ngModel)]=\"zipcode\" [ngModelOptions]=\"{standalone: true}\" />\n\t\t</div>\n\t\t<p class=\"form-text text-muted\">\n\t\tUtilize apenas números para informar o CEP, não é necessário usar hífem\n\t\t</p>\n\t\t<footer class=\"float-sm-right\">\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\">buscar</button>\n\t\t</footer>\n\t</form>\n\t<section class=\"col-md-9\">\n\t\t<sk-fading-circle *ngIf=\"is_searching\"></sk-fading-circle>\n\t\t<div itemscope itemtype=\"http://schema.org/ContactPoint\" *ngIf=\"address\" class=\"card\"> \n\t\t\t<ul class=\"list-group list-group-flush\" itemscope itemtype=\"schema.org/PostalAddress\"> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"streetAddress\">{{ address.street }}</li> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"addressLocality\">Cidade: {{ address.city }}</li>\n\t\t\t\t<li class=\"list-group-item\" itemprop=\"addressRegion\">Estado: {{ address.state }}</li> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"postalCode\">CEP: {{ address.cep }}</li> \n\t\t\t</ul>\n\t\t</div>\n\n\t\t<div class=\"alert alert-warning\" *ngIf=\"error\">\n\t\t\t<h3>{{ error.message }}</h3>\n\t\t\t{{ error }}\n\t\t</div>\n\t</section>\n</div>"
 
 /***/ },
 

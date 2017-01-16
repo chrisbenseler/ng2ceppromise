@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   zipcode:string = ""
   address:any = null
   is_searching:boolean = false
+  error:any = null
 
   constructor() { }
 
@@ -23,6 +24,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
+  	this.error = null
   	this.is_searching = true
   	this.address = null
   	cep(this.zipcode)
@@ -31,7 +33,7 @@ export class SearchComponent implements OnInit {
   		this.is_searching = false
   	})
   	.catch( err => {
-  		console.log(err)
+  		this.error = err
   		this.is_searching = false
   	})
   }

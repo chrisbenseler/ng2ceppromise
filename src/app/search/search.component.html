@@ -23,5 +23,10 @@
 				<li class="list-group-item" itemprop="postalCode">CEP: {{ address.cep }}</li> 
 			</ul>
 		</div>
+
+		<div class="alert alert-warning" *ngIf="error">
+			<h3>{{ error.message }}</h3>
+			{{ error }}
+		</div>
 	</section>
 </div>

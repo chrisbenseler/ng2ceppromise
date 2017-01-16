@@ -8,4 +8,9 @@ export class Ng2ceppromisePage {
   getParagraphText() {
     return element(by.css('app-root h1')).getText();
   }
+
+  getElementsBySelector(selector) {
+  	return element(by.css(selector))
+  }
+
 }

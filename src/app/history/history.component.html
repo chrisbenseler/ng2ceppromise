@@ -1,0 +1,13 @@
+<section class="row">
+	<sk-fading-circle *ngIf="is_loading"></sk-fading-circle>
+	<div class="col-md-6" *ngFor="let address of addresses">
+		<div itemscope itemtype="http://schema.org/ContactPoint" class="card"> 
+			<ul class="list-group list-group-flush" itemscope itemtype="schema.org/PostalAddress"> 
+				<li class="list-group-item" itemprop="streetAddress">{{ address.street }}</li> 
+				<li class="list-group-item" itemprop="addressLocality">Cidade: {{ address.city }}</li>
+				<li class="list-group-item" itemprop="addressRegion">Estado: {{ address.state }}</li> 
+				<li class="list-group-item" itemprop="postalCode">CEP: {{ address.cep }}</li> 
+			</ul>
+		</div>
+	</div>
+</section>

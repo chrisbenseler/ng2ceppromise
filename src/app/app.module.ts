@@ -10,11 +10,13 @@ import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
 
 import { AppComponent } from './app.component'
 import { AboutComponent } from './about/about.component'
-import { SearchComponent } from './search/search.component'
+import { SearchComponent } from './search/search.component';
+import { HistoryComponent } from './history/history.component'
 
 const appRoutes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'history', component: HistoryComponent },
   { path: '**', redirectTo: '/search' }
 ]
 
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     AboutComponent,
     SearchComponent,
-    FadingCircleComponent
+    FadingCircleComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

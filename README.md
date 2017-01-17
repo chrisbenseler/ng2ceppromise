@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chrisbenseler/ng2ceppromise.svg?branch=master)](https://travis-ci.org/chrisbenseler/ng2ceppromise)
+
 # Ng2 Cep Promise
 
 Search address from Brazil using it's zipcode (CEP)

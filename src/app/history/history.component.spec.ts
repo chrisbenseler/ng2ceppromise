@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { HistoryComponent } from './history.component';
+import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
+import { LocalStorageModule } from 'angular-2-local-storage'
 
 describe('HistoryComponent', () => {
   let component: HistoryComponent;
@@ -11,7 +13,12 @@ describe('HistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HistoryComponent ]
+      declarations: [ HistoryComponent, FadingCircleComponent ],
+      imports: [LocalStorageModule.withConfig({
+          prefix: 'my-app',
+          storageType: 'localStorage'
+      })
+      ]
     })
     .compileComponents();
   }));

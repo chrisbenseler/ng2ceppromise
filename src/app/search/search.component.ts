@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { LocalStorageService } from 'angular-2-local-storage'
 import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
 import { default as cep } from 'cep-promise'
 
@@ -14,10 +15,10 @@ export class SearchComponent implements OnInit {
   is_searching:boolean = false
   error:any = null
 
-  constructor() { }
+  constructor(public localStorageService: LocalStorageService) { }
 
   ngOnInit() {
- 
+
   }
 
   onSubmit() {
@@ -28,11 +29,30 @@ export class SearchComponent implements OnInit {
   	.then( data => {
   		this.address = data
   		this.is_searching = false
+      return data
   	})
+    .then( this.add_address_storage.bind(this) )
+    .then( this.add_key_storage.bind(this) )
   	.catch( err => {
   		this.error = err
   		this.is_searching = false
   	})
+  }
+
+  add_address_storage(address) {
+    this.localStorageService.set(address.cep, JSON.stringify(address))
+    return address
+  }
+
+  add_key_storage(address) {
+    let ceps = this.localStorageService.get('ceps')
+    if(!ceps)
+      ceps = {}
+    ceps['keys'] = ceps['keys'] || []
+    if(ceps['keys'].indexOf(address.cep) < 0) {
+      ceps['keys'].push(address.cep)
+      this.localStorageService.set('ceps', ceps)
+    }
   }
 
 }

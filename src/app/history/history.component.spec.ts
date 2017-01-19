@@ -10,12 +10,12 @@ import { LocalStorageModule } from 'angular-2-local-storage'
 describe('HistoryComponent', () => {
   let component: HistoryComponent;
   let fixture: ComponentFixture<HistoryComponent>;
-
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HistoryComponent, FadingCircleComponent ],
       imports: [LocalStorageModule.withConfig({
-          prefix: 'my-app',
+          prefix: 'historycomponent-prefix',
           storageType: 'localStorage'
       })
       ]
@@ -23,13 +23,16 @@ describe('HistoryComponent', () => {
     .compileComponents();
   }));
 
+  
   beforeEach(() => {
     fixture = TestBed.createComponent(HistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

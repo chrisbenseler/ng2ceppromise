@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { LocalStorageService } from 'angular-2-local-storage'
 import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
 import { default as cep } from 'cep-promise'
@@ -10,12 +10,16 @@ import { default as cep } from 'cep-promise'
 })
 export class SearchComponent implements OnInit {
 
-  zipcode:string = ""
+  //@Input() cepfield: 
+
+  @Input() zipcode:string = ""
   address:any = null
   is_searching:boolean = false
   error:any = null
+  cep: any = cep
 
-  constructor(public localStorageService: LocalStorageService) { }
+  constructor(public localStorageService: LocalStorageService) {
+  }
 
   ngOnInit() {
 
@@ -25,7 +29,7 @@ export class SearchComponent implements OnInit {
   	this.error = null
   	this.is_searching = true
   	this.address = null
-  	cep(this.zipcode)
+  	this.cep(this.zipcode)
   	.then( data => {
   		this.address = data
   		this.is_searching = false

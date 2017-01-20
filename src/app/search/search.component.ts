@@ -10,13 +10,11 @@ import { default as cep } from 'cep-promise'
 })
 export class SearchComponent implements OnInit {
 
-  //@Input() cepfield: 
-
-  @Input() zipcode:string = ""
+  zipcode:string = ""
   address:any = null
   is_searching:boolean = false
   error:any = null
-  cep: any = cep
+  cep:any = cep
 
   constructor(public localStorageService: LocalStorageService) {
   }

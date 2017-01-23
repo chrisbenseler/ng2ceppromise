@@ -5,7 +5,28 @@ import { DebugElement } from '@angular/core';
 
 import { HistoryComponent } from './history.component';
 import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
-import { LocalStorageModule } from 'angular-2-local-storage'
+import { LocalStorageModule, LocalStorageService } from 'angular-2-local-storage'
+
+let address_1 = {
+  street: 'Rua Padre Ramon Ortiz',
+  city: 'São Paulo',
+  state: 'SP',
+  cep: '04477100'
+}
+
+let address_2 = {
+  street: 'Rua Padre Ramon Ortiz',
+  city: 'São Paulo',
+  state: 'SP',
+  cep: '04477101'
+}
+
+let address_3 = {
+  street: 'Rua Padre Ramon Ortiz',
+  city: 'São Paulo',
+  state: 'SP',
+  cep: '04477102'
+}
 
 describe('HistoryComponent', () => {
   let component: HistoryComponent;
@@ -34,5 +55,17 @@ describe('HistoryComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should list items from storage', () => {
+    component.localStorageService.set('ceps', { keys: ['04477100', '04477101', '04477102'] })
+    component.localStorageService.set(address_1.cep, JSON.stringify(address_1))
+    component.localStorageService.set(address_2.cep, JSON.stringify(address_2))
+    component.localStorageService.set(address_3.cep, JSON.stringify(address_3))
+    fixture.detectChanges()
+    component.ngOnInit()
+    fixture.detectChanges()
+    expect(component.addresses.length).toBe(3)
+    expect(fixture.debugElement.query(By.css('div.card'))).toBeTruthy()
+  })
   
 });

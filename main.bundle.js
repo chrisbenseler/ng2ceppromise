@@ -219,7 +219,19 @@ var HistoryComponent = (function () {
                 .map(function (cep) { return _this.localStorageService.get(cep); })
                 .map(function (address) { return JSON.parse(address); });
         }
+        else {
+            this.addresses = [];
+        }
         this.is_loading = false;
+    };
+    HistoryComponent.prototype.remove_history = function () {
+        var _this = this;
+        var ceps = this.localStorageService.get('ceps');
+        if (ceps) {
+            ceps['keys'].forEach(function (cep) { return _this.localStorageService.remove(cep); });
+        }
+        this.localStorageService.remove('ceps');
+        this.ngOnInit();
     };
     HistoryComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -265,6 +277,7 @@ var SearchComponent = (function () {
         this.address = null;
         this.is_searching = false;
         this.error = null;
+        this.cep = __WEBPACK_IMPORTED_MODULE_2_cep_promise___default.a;
     }
     SearchComponent.prototype.ngOnInit = function () {
     };
@@ -273,7 +286,7 @@ var SearchComponent = (function () {
         this.error = null;
         this.is_searching = true;
         this.address = null;
-        __WEBPACK_IMPORTED_MODULE_2_cep_promise___default()(this.zipcode)
+        this.cep(this.zipcode)
             .then(function (data) {
             _this.address = data;
             _this.is_searching = false;
@@ -432,7 +445,7 @@ module.exports = "<h1>\n  {{title}}\n</h1>\n<nav class=\"nav nav-tabs\">\n\t<li 
 /***/ 922:
 /***/ function(module, exports) {
 
-module.exports = "<section class=\"row\">\n\t<sk-fading-circle *ngIf=\"is_loading\"></sk-fading-circle>\n\t<div class=\"col-md-6\" *ngFor=\"let address of addresses\">\n\t\t<div itemscope itemtype=\"http://schema.org/ContactPoint\" class=\"card\"> \n\t\t\t<ul class=\"list-group list-group-flush\" itemscope itemtype=\"schema.org/PostalAddress\"> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"streetAddress\">{{ address.street }}</li> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"addressLocality\">Cidade: {{ address.city }}</li>\n\t\t\t\t<li class=\"list-group-item\" itemprop=\"addressRegion\">Estado: {{ address.state }}</li> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"postalCode\">CEP: {{ address.cep }}</li> \n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</section>"
+module.exports = "<div class=\"col-md-12 text-right\">\n\t<button class=\"btn btn-warning\" (click)=\"remove_history()\">apagar</button>\n</div>\n<section class=\"row\">\n\t<sk-fading-circle *ngIf=\"is_loading\"></sk-fading-circle>\n\t<div class=\"col-md-6\" *ngFor=\"let address of addresses\">\n\t\t<div itemscope itemtype=\"http://schema.org/ContactPoint\" class=\"card\"> \n\t\t\t<ul class=\"list-group list-group-flush\" itemscope itemtype=\"schema.org/PostalAddress\"> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"streetAddress\">{{ address.street }}</li> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"addressLocality\">Cidade: {{ address.city }}</li>\n\t\t\t\t<li class=\"list-group-item\" itemprop=\"addressRegion\">Estado: {{ address.state }}</li> \n\t\t\t\t<li class=\"list-group-item\" itemprop=\"postalCode\">CEP: {{ address.cep }}</li> \n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</section>"
 
 /***/ },
 

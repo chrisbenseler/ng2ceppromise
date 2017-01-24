@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -67,5 +67,15 @@ describe('HistoryComponent', () => {
     expect(component.addresses.length).toBe(3)
     expect(fixture.debugElement.query(By.css('div.card'))).toBeTruthy()
   })
+
+  it('should clear storage', fakeAsync(() => {
+    component.remove_history()
+    fixture.detectChanges()
+    component.ngOnInit()
+    fixture.detectChanges()
+    expect(component.addresses.length).toBe(0)
+    component.remove_history()
+    fixture.detectChanges()
+  }))
   
 });

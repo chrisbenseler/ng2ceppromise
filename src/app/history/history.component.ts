@@ -21,8 +21,19 @@ export class HistoryComponent implements OnInit {
   		this.addresses = ceps['keys']
   		.map( cep => this.localStorageService.get(cep) )
   		.map( address => JSON.parse(address))
-  	}
+  	} else {
+      this.addresses = []
+    }
   	this.is_loading = false
+  }
+
+  remove_history() {
+    let ceps = this.localStorageService.get('ceps')
+    if(ceps) {
+      ceps['keys'].forEach( cep => this.localStorageService.remove(cep) )
+    }
+    this.localStorageService.remove('ceps')
+    this.ngOnInit()
   }
 
 }

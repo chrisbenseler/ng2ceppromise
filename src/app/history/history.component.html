@@ -1,3 +1,6 @@
+<div class="col-md-12 text-right">
+	<button class="btn btn-warning" (click)="remove_history()">apagar</button>
+</div>
 <section class="row">
 	<sk-fading-circle *ngIf="is_loading"></sk-fading-circle>
 	<div class="col-md-6" *ngFor="let address of addresses">

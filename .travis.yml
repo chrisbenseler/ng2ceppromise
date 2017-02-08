@@ -23,4 +23,8 @@ before_script:
 - npm install
 - ng build
 
+after_script:
+- npm install -g coveralls
+- coveralls < coverage/lcov.info
+
 script: karma start karma.conf.js --single-run

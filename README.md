@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/chrisbenseler/ng2ceppromise.svg?branch=master)](https://travis-ci.org/chrisbenseler/ng2ceppromise)
-
 <p align="center">
 <a href="https://travis-ci.org/chrisbenseler/ng2ceppromise">
 <img src="https://api.travis-ci.org/chrisbenseler/ng2ceppromise.svg?branch=master">

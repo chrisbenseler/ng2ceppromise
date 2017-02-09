@@ -1,5 +1,15 @@
 [![Build Status](https://travis-ci.org/chrisbenseler/ng2ceppromise.svg?branch=master)](https://travis-ci.org/chrisbenseler/ng2ceppromise)
 
+<p align="center">
+<a href="https://travis-ci.org/chrisbenseler/ng2ceppromise">
+<img src="https://api.travis-ci.org/chrisbenseler/ng2ceppromise.svg?branch=master">
+</a>
+<a href="https://coveralls.io/github/chrisbenseler/ng2ceppromise?branch=master">
+<img src="https://coveralls.io/repos/github/chrisbenseler/ng2ceppromise/badge.svg?branch=master">
+</a>
+</p>
+
+
 # Ng2 Cep Promise
 
 Search address from Brazil using it's zipcode (CEP)

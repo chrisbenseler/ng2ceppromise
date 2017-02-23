@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'Consulta CEP';
 
   constructor(translate: TranslateService) {
-  	translate.setDefaultLang('pt-br')
-  	translate.use('pt-br')
+	translate.setDefaultLang('pt-br');
+	translate.use('pt-br');
   }
 }

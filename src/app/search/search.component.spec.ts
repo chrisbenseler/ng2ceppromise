@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms'
+import { TranslateModule } from 'ng2-translate'
 
 import { SearchComponent } from './search.component';
 import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
@@ -26,6 +27,7 @@ describe('SearchComponent', () => {
       declarations: [ SearchComponent, FadingCircleComponent ],
       imports: [ 
         FormsModule,
+        TranslateModule.forRoot(),
         LocalStorageModule.withConfig({
           prefix: 'my-app',
           storageType: 'localStorage'

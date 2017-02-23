@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { TranslateModule } from 'ng2-translate'
 
 import { HistoryComponent } from './history.component';
 import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
@@ -35,10 +36,12 @@ describe('HistoryComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HistoryComponent, FadingCircleComponent ],
-      imports: [LocalStorageModule.withConfig({
+      imports: [
+        LocalStorageModule.withConfig({
           prefix: 'historycomponent-prefix',
           storageType: 'localStorage'
-      })
+        }),
+        TranslateModule.forRoot()
       ]
     })
     .compileComponents();

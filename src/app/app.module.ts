@@ -21,6 +21,9 @@ const appRoutes: Routes = [
   { path: '**', redirectTo: '/search' }
 ]
 
+export function createTranslateLoader(http: Http) {
+    return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -40,7 +43,11 @@ const appRoutes: Routes = [
         prefix: 'my-app',
         storageType: 'localStorage'
     }),
-    TranslateModule.forRoot()
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    })
   ],
   bootstrap: [AppComponent]
 })

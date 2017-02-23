@@ -129,6 +129,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__about_about_component__ = __webpack_require__(664);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__search_search_component__ = __webpack_require__(668);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__history_history_component__ = __webpack_require__(667);
+/* unused harmony export createTranslateLoader */
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -158,6 +159,9 @@ var appRoutes = [
     { path: 'history', component: __WEBPACK_IMPORTED_MODULE_12__history_history_component__["a" /* HistoryComponent */] },
     { path: '**', redirectTo: '/search' }
 ];
+function createTranslateLoader(http) {
+    return new __WEBPACK_IMPORTED_MODULE_8_ng2_translate__["b" /* TranslateStaticLoader */](http, './assets/i18n', '.json');
+}
 var AppModule = (function () {
     function AppModule() {
     }
@@ -180,7 +184,11 @@ var AppModule = (function () {
                     prefix: 'my-app',
                     storageType: 'localStorage'
                 }),
-                __WEBPACK_IMPORTED_MODULE_8_ng2_translate__["b" /* TranslateModule */].forRoot()
+                __WEBPACK_IMPORTED_MODULE_8_ng2_translate__["c" /* TranslateModule */].forRoot({
+                    provide: __WEBPACK_IMPORTED_MODULE_8_ng2_translate__["d" /* TranslateLoader */],
+                    useFactory: (createTranslateLoader),
+                    deps: [__WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]]
+                })
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         }), 

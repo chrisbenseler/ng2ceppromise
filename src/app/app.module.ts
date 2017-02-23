@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { LocalStorageModule } from 'angular-2-local-storage'
 import { FadingCircleComponent } from 'ng-spin-kit/app/spinners'
+import { TranslateModule } from 'ng2-translate'
 
 import { AppComponent } from './app.component'
 import { AboutComponent } from './about/about.component'
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     LocalStorageModule.withConfig({
         prefix: 'my-app',
         storageType: 'localStorage'
-    })
+    }),
+    TranslateModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

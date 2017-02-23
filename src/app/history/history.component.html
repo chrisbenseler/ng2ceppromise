@@ -1,5 +1,5 @@
 <div class="col-md-12 text-right" *ngIf="addresses.length > 0">
-	<button class="btn btn-warning" (click)="remove_history()">apagar</button>
+	<button class="btn btn-warning" (click)="remove_history()">{{ 'history.button' | translate }}</button>
 </div>
 <section class="row">
 	<sk-fading-circle *ngIf="is_loading"></sk-fading-circle>
@@ -7,9 +7,9 @@
 		<div itemscope itemtype="http://schema.org/ContactPoint" class="card"> 
 			<ul class="list-group list-group-flush" itemscope itemtype="schema.org/PostalAddress"> 
 				<li class="list-group-item" itemprop="streetAddress">{{ address.street }}</li> 
-				<li class="list-group-item" itemprop="addressLocality">Cidade: {{ address.city }}</li>
-				<li class="list-group-item" itemprop="addressRegion">Estado: {{ address.state }}</li> 
-				<li class="list-group-item" itemprop="postalCode">CEP: {{ address.cep }}</li> 
+				<li class="list-group-item" itemprop="addressLocality">{{ 'result.city' | translate }}: {{ address.city }}</li>
+				<li class="list-group-item" itemprop="addressRegion">{{ 'result.state' | translate }}: {{ address.state }}</li> 
+				<li class="list-group-item" itemprop="postalCode">{{ 'result.zipcode' | translate }}: {{ address.cep }}</li> 
 			</ul>
 		</div>
 	</div>

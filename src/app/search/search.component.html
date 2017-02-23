@@ -1,16 +1,14 @@
-<h2>Busca</h2>
-
 <div class="row">
 	<form (ngSubmit)="onSubmit()" class="col-md-3 col-sm-12">
 		<div class="input-group">
-			<div class="input-group-addon">CEP</div>
+			<div class="input-group-addon">{{ 'search.zipcode' | translate }}</div>
 			<input type="text" class="form-control" required size=8 minlength=8 maxlength=8 placeholder="00000000" [(ngModel)]="zipcode" [ngModelOptions]="{standalone: true}" />
 		</div>
 		<p class="form-text text-muted">
-		Utilize apenas números para informar o CEP, não é necessário usar hífem
+		{{ 'search.disclaimer' | translate }}
 		</p>
 		<footer class="float-sm-right">
-			<button type="submit" class="btn btn-primary">buscar</button>
+			<button type="submit" class="btn btn-primary">{{ 'search.button' | translate }}</button>
 		</footer>
 	</form>
 	<section class="col-md-9">
@@ -18,9 +16,9 @@
 		<div itemscope itemtype="http://schema.org/ContactPoint" *ngIf="address" class="card"> 
 			<ul class="list-group list-group-flush" itemscope itemtype="schema.org/PostalAddress"> 
 				<li class="list-group-item" itemprop="streetAddress">{{ address.street }}</li> 
-				<li class="list-group-item" itemprop="addressLocality">Cidade: {{ address.city }}</li>
-				<li class="list-group-item" itemprop="addressRegion">Estado: {{ address.state }}</li> 
-				<li class="list-group-item" itemprop="postalCode">CEP: {{ address.cep }}</li> 
+				<li class="list-group-item" itemprop="addressLocality">{{ 'result.city' | translate }}: {{ address.city }}</li>
+				<li class="list-group-item" itemprop="addressRegion">{{ 'result.state' | translate }}: {{ address.state }}</li> 
+				<li class="list-group-item" itemprop="postalCode">{{ 'result.zipcode' | translate }}: {{ address.cep }}</li> 
 			</ul>
 		</div>
 
